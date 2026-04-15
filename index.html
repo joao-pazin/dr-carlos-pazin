@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Carlos Pazin — Centro de Odontologia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white:    #ffffff;
+  --off:      #f7f5f2;
+  --cream:    #eeeae4;
+  --blue:     #2d6a9f;
+  --blue-lt:  #e8f1f9;
+  --blue-mid: #4a8fc4;
+  --ink:      #1a2332;
+  --ink-mid:  #3d4f63;
+  --ink-lt:   #7a8fa3;
+  --border:   #e2ddd7;
+  --shadow:   rgba(45,106,159,0.08);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4rem;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.01em;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue);
+}
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em;
+  color: var(--ink-mid); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-cta {
+  background: var(--blue); color: var(--white);
+  padding: 0.6rem 1.5rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 6rem 4rem 4rem;
+  background: var(--off);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, var(--blue-lt) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -60px; left: 30%;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,106,159,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--blue-lt); color: var(--blue);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.4rem 0.9rem;
+  border-radius: 50px; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 400; line-height: 1.2;
+  color: var(--ink); margin-bottom: 1.4rem;
+}
+.hero h1 em { font-style: italic; color: var(--blue); }
+.hero-sub {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: var(--ink-mid); margin-bottom: 2.4rem; max-width: 440px;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--blue); color: var(--white);
+  padding: 0.9rem 2rem; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 600; letter-spacing: 0.03em;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--blue);
+  padding: 0.9rem 2rem; border-radius: 50px;
+  border: 1.5px solid var(--blue);
+  font-size: 0.88rem; font-weight: 600; letter-spacing: 0.03em;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-ghost:hover { background: var(--blue-lt); }
+
+/* Hero card lado direito */
+.hero-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 2.4rem;
+  box-shadow: 0 20px 60px var(--shadow), 0 4px 16px rgba(0,0,0,0.04);
+  position: relative;
+}
+.hero-card-tag {
+  position: absolute; top: -14px; left: 2rem;
+  background: var(--blue); color: var(--white);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+}
+.hero-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; margin-bottom: 1.8rem;
+}
+.hero-stat {
+  background: var(--white);
+  padding: 1.5rem 1.2rem; text-align: center;
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 400;
+  color: var(--blue); line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-lt);
+  margin-top: 0.3rem;
+}
+.hero-badge {
+  display: flex; align-items: center; gap: 0.8rem;
+  background: var(--blue-lt); border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+.hero-badge-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.hero-badge-text { font-size: 0.82rem; font-weight: 500; color: var(--ink-mid); line-height: 1.4; }
+.hero-badge-text strong { display: block; color: var(--ink); font-weight: 700; }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 0 4rem;
+}
+
+/* ── SECTIONS ── */
+section { padding: 5.5rem 4rem; }
+.section-wrap { max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--blue); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.section-eyebrow::before {
+  content: ''; display: block;
+  width: 20px; height: 2px; background: var(--blue); border-radius: 2px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  font-weight: 400; line-height: 1.2;
+  color: var(--ink); margin-bottom: 3rem;
+}
+.section-title em { font-style: italic; color: var(--blue); }
+
+/* ── SERVICES ── */
+#servicos { background: var(--white); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.service-card {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem 1.6rem;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  cursor: default;
+}
+.service-card:hover {
+  box-shadow: 0 12px 32px var(--shadow);
+  transform: translateY(-4px);
+  border-color: var(--blue-mid);
+}
+.service-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 400;
+  color: var(--blue-lt); line-height: 1;
+  margin-bottom: 0.8rem;
+  /* override: make it visible */
+  color: rgba(45,106,159,0.18);
+}
+.service-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--blue-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1rem;
+}
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); margin-bottom: 0.4rem;
+}
+.service-desc {
+  font-size: 0.82rem; color: var(--ink-lt);
+  line-height: 1.65; font-weight: 400;
+}
+
+/* ── TEAM ── */
+#equipe { background: var(--off); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.team-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem 1.6rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.team-card:hover {
+  box-shadow: 0 10px 28px var(--shadow);
+  transform: translateY(-3px);
+}
+.team-avatar {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-lt), #c9dff2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 500; color: var(--blue);
+  margin-bottom: 0.4rem;
+}
+.team-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 500; color: var(--ink);
+}
+.team-role {
+  font-size: 0.78rem; color: var(--blue);
+  font-weight: 500; line-height: 1.5;
+}
+
+/* ── REVIEWS ── */
+#depoimentos { background: var(--white); }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.review-card {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.8rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.review-card:hover {
+  box-shadow: 0 10px 28px var(--shadow);
+  transform: translateY(-3px);
+}
+.review-stars { color: #f0a500; font-size: 0.9rem; letter-spacing: 0.05em; }
+.review-text {
+  font-size: 0.88rem; line-height: 1.75;
+  color: var(--ink-mid); flex: 1; font-weight: 400;
+  font-style: italic;
+}
+.review-author {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+}
+.review-avatar {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue-lt), #c9dff2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem; font-weight: 500; color: var(--blue);
+}
+.review-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.review-meta { font-size: 0.7rem; color: var(--ink-lt); margin-top: 0.1rem; }
+
+/* ── LOCATIONS ── */
+#localizacao { background: var(--off); }
+.locations-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.location-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.4rem 2rem;
+  transition: box-shadow 0.25s;
+}
+.location-card:hover { box-shadow: 0 10px 28px var(--shadow); }
+.location-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--blue); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.location-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 0.8rem;
+}
+.location-address {
+  font-size: 0.88rem; color: var(--ink-mid);
+  line-height: 1.7; margin-bottom: 1.2rem;
+}
+.map-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--blue); font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.03em;
+  border-bottom: 1.5px solid var(--blue-lt);
+  padding-bottom: 0.1rem;
+  transition: border-color 0.2s;
+}
+.map-btn:hover { border-color: var(--blue); }
+
+/* ── CTA ── */
+#agendar {
+  background: var(--blue);
+  text-align: center;
+}
+#agendar .section-wrap { max-width: 680px; }
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400; line-height: 1.2;
+  color: var(--white); margin-bottom: 1rem;
+}
+.cta-title em { font-style: italic; opacity: 0.85; }
+.cta-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  margin-bottom: 2.5rem; font-weight: 300; line-height: 1.7;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: #25D366; color: var(--white);
+  padding: 0.9rem 1.8rem; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 700;
+  text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+}
+.btn-wa:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-wa svg { width: 18px; height: 18px; }
+.btn-wa-ghost {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(255,255,255,0.15); color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  padding: 0.9rem 1.8rem; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; transition: background 0.2s;
+}
+.btn-wa-ghost:hover { background: rgba(255,255,255,0.22); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2.8rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 500; color: var(--white);
+}
+.footer-logo small {
+  display: block; font-family: 'Nunito', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-lt); margin-top: 0.1rem;
+}
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.78rem; color: #5a7080; text-decoration: none;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 0.7rem; color: #3a4a55; }
+
+/* ── WA FLUTUANTE ── */
+.wa-float {
+  position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 999;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem;
+}
+.wa-float-menu {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  opacity: 0; pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 0.22s, transform 0.22s;
+}
+.wa-float.open .wa-float-menu { opacity: 1; pointer-events: all; transform: none; }
+.wa-item {
+  display: flex; align-items: center; gap: 0.65rem;
+  background: var(--white); border: 1px solid var(--border);
+  padding: 0.6rem 1rem 0.6rem 0.75rem; border-radius: 50px;
+  text-decoration: none; color: var(--ink);
+  font-size: 0.82rem; font-weight: 600; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.wa-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.14); border-color: #25D366; }
+.wa-item .dot { width: 8px; height: 8px; border-radius: 50%; background: #25D366; flex-shrink: 0; }
+.wa-btn {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-btn:hover { transform: scale(1.07); box-shadow: 0 6px 26px rgba(37,211,102,0.5); }
+.wa-btn svg { width: 26px; height: 26px; fill: white; transition: transform 0.22s; }
+.wa-float.open .wa-btn svg { transform: rotate(45deg); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-left > * { animation: fadeUp 0.7s ease both; }
+.hero-eyebrow { animation-delay: 0.05s; }
+.hero h1 { animation-delay: 0.18s; }
+.hero-sub { animation-delay: 0.3s; }
+.hero-actions { animation-delay: 0.42s; }
+.hero-card { animation: fadeUp 0.7s 0.2s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 0.55rem 1.1rem; font-size: 0.78rem; }
+  section { padding: 3.5rem 1.5rem; }
+  .divider { margin: 0 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+
+  .hero { padding: 5.5rem 1.5rem 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-card { max-width: 480px; }
+
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .locations-grid { grid-template-columns: 1fr; }
+
+  footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.9rem 1rem; }
+  .nav-logo { font-size: 0.98rem; }
+  .nav-cta { display: none; }
+
+  section { padding: 3rem 1rem; }
+  .divider { margin: 0 1rem; }
+
+  .hero { padding: 4.5rem 1rem 2.5rem; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero-sub { font-size: 0.92rem; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-ghost { text-align: center; }
+  .hero-stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .hero-stat { padding: 1rem 0.5rem; }
+  .hero-stat-num { font-size: 1.6rem; }
+  .hero-stat-label { font-size: 0.6rem; }
+  .hero-card { padding: 1.6rem 1.2rem; }
+
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .service-card { padding: 1.2rem 1rem; border-radius: 12px; }
+  .service-icon { width: 32px; height: 32px; font-size: 1rem; border-radius: 8px; }
+  .service-name { font-size: 1rem; }
+  .service-desc { font-size: 0.76rem; }
+
+  .team-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .team-card { padding: 1.3rem 1rem; border-radius: 12px; }
+  .team-avatar { width: 42px; height: 42px; font-size: 0.95rem; }
+  .team-name { font-size: 0.95rem; }
+  .team-role { font-size: 0.72rem; }
+
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .btn-wa, .btn-wa-ghost { justify-content: center; }
+
+  .wa-float { bottom: 1.2rem; right: 1rem; }
+  .wa-item { font-size: 0.76rem; padding: 0.5rem 0.85rem 0.5rem 0.65rem; }
+
+  footer { padding: 1.8rem 1rem; }
+  .footer-links { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    Dr. Carlos Pazin
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#equipe">Equipe</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+  </ul>
+  <a href="#agendar" class="nav-cta">Agendar Consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Centro de Odontologia · Rio de Janeiro</div>
+      <h1>Cuidar do seu sorriso é <em>cuidar de você</em></h1>
+      <p class="hero-sub">Uma equipe multidisciplinar que une tecnologia de ponta com um atendimento verdadeiramente humano. Duas unidades no Rio de Janeiro para melhor atendê-lo.</p>
+      <div class="hero-actions">
+        <a href="#agendar" class="btn-primary">Agendar Consulta</a>
+        <a href="#servicos" class="btn-ghost">Ver Especialidades</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-tag">Números da clínica</div>
+      <div class="hero-stats-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-num">30+</div>
+          <div class="hero-stat-label">Anos de experiência</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">Especialistas</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">9+</div>
+          <div class="hero-stat-label">Especialidades</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2</div>
+          <div class="hero-stat-label">Unidades no Rio de Janeiro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="servicos">
+  <div class="section-wrap">
+    <div class="section-eyebrow">O que oferecemos</div>
+    <h2 class="section-title">Especialidades <em>completas</em><br>para toda a família</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦷</div>
+        <div class="service-name">Ortodontia</div>
+        <div class="service-desc">Alinhamento e correção da mordida com aparelhos modernos e eficazes.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-name">Estética Dental</div>
+        <div class="service-desc">Transforme seu sorriso com clareamento, facetas e procedimentos estéticos.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">😁</div>
+        <div class="service-name">Invisalign</div>
+        <div class="service-desc">Aparelho invisível para correção discreta e confortável, com resultado previsível.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💆</div>
+        <div class="service-name">Harmonização Facial</div>
+        <div class="service-desc">Procedimentos estéticos faciais para realçar sua beleza natural com segurança.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔬</div>
+        <div class="service-name">Endodontia</div>
+        <div class="service-desc">Tratamento de canal com tecnologia avançada e máxima precisão e conforto.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌬️</div>
+        <div class="service-name">Halitologia</div>
+        <div class="service-desc">Diagnóstico e tratamento especializado do mau hálito com abordagem completa.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔩</div>
+        <div class="service-name">Implantodontia</div>
+        <div class="service-desc">Implantes dentários para recuperar sua mastigação e autoestima com naturalidade.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <div class="service-name">Reabilitação Bucal</div>
+        <div class="service-desc">Tratamento global para restaurar função e estética do sorriso de forma integrada.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <div class="service-name">Periodontia</div>
+        <div class="service-desc">Prevenção e tratamento de gengivas para garantir a saúde de toda a boca.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section id="equipe">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Nossa equipe</div>
+    <h2 class="section-title">Profissionais <em>dedicados</em><br>ao seu sorriso</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">CP</div>
+        <div class="team-name">Dr. Carlos Pazin</div>
+        <div class="team-role">Invisalign Doctor · Implantodontista · Ortodontista</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">AQ</div>
+        <div class="team-name">Dr. Augusto Queiroz</div>
+        <div class="team-role">Odontologia Estética · Implantodontia · Cirurgia Oral</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">CC</div>
+        <div class="team-name">Dra. Camila Chevallier</div>
+        <div class="team-role">Ortodontia · Harmonização Facial</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">CF</div>
+        <div class="team-name">Dra. Carolina Fernandez</div>
+        <div class="team-role">Clínico Geral</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">EG</div>
+        <div class="team-name">Dra. Estela Guaitanele</div>
+        <div class="team-role">Clínico Geral</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">TS</div>
+        <div class="team-name">Dra. Tainá Silva</div>
+        <div class="team-role">Especialista em Endodontia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section id="depoimentos">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Depoimentos</div>
+    <h2 class="section-title">O que dizem nossos <em>pacientes</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Eu e minha família confiamos plenamente no trabalho do Dr. Carlos Pazin. Sempre muito profissional, atencioso e cuidadoso, ele nos transmite segurança em cada consulta. A qualidade dos serviços é impecável! Recomendo de olhos fechados!"</p>
+        <div class="review-author">
+          <div class="review-avatar">JL</div>
+          <div>
+            <div class="review-name">Janaina Lino</div>
+            <div class="review-meta">Google · 6 avaliações</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Experiência excepcional. As recepcionistas Carla e Diana demonstram profissionalismo, simpatia e atenção genuína. Transformam o ambiente em um lugar acolhedor e tranquilo, fazendo toda a diferença na experiência dos pacientes."</p>
+        <div class="review-author">
+          <div class="review-avatar">GP</div>
+          <div>
+            <div class="review-name">Gabriel Pereira</div>
+            <div class="review-meta">Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Excelente dentista, calmo, paciente, transmite muita segurança no tratamento. Estou feliz com meus novos dentes — perfeitos, bonitos, saudáveis. Invisalign!"</p>
+        <div class="review-author">
+          <div class="review-avatar">VT</div>
+          <div>
+            <div class="review-name">Vera Tavares Machado</div>
+            <div class="review-meta">Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCATIONS -->
+<section id="localizacao">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Onde estamos</div>
+    <h2 class="section-title">Duas unidades no <em>Rio de Janeiro</em></h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <div class="location-num">1</div>
+        <div class="location-name">Clínica Leblon</div>
+        <div class="location-address">Rua General Urquiza, 67, loja 9<br>Leblon — Rio de Janeiro, RJ</div>
+        <a href="https://maps.google.com/?q=Rua+General+Urquiza,67,Leblon,Rio+de+Janeiro" target="_blank" class="map-btn">Ver no mapa →</a>
+      </div>
+      <div class="location-card">
+        <div class="location-num">2</div>
+        <div class="location-name">Clínica Lago do Machado</div>
+        <div class="location-address">Rua do Catete, 311, sala 804<br>Largo do Machado — Rio de Janeiro, RJ</div>
+        <a href="https://maps.google.com/?q=Rua+do+Catete,311,Largo+do+Machado,Rio+de+Janeiro" target="_blank" class="map-btn">Ver no mapa →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="agendar">
+  <div class="section-wrap">
+    <div class="section-eyebrow" style="color:rgba(255,255,255,0.6); justify-content:center;">Pronto para começar?</div>
+    <h2 class="cta-title">Agende sua consulta <em>hoje mesmo</em></h2>
+    <p class="cta-sub">Entre em contato pelo WhatsApp e nossa equipe atende você com prazer.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5521971857509" target="_blank" class="btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Leblon
+      </a>
+      <a href="https://wa.me/5521994014570" target="_blank" class="btn-wa-ghost">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Catete
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    Dr. Carlos Pazin
+    <small>Centro de Odontologia</small>
+  </div>
+  <div class="footer-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#localizacao">Unidades</a>
+    <a href="#agendar">Contato</a>
+  </div>
+  <div class="footer-copy">© 2025 Dr. Carlos Pazin. Todos os direitos reservados.</div>
+</footer>
+
+<!-- WA FLUTUANTE -->
+<div class="wa-float" id="waFloat">
+  <div class="wa-float-menu">
+    <a href="https://wa.me/5521971857509" target="_blank" class="wa-item">
+      <span class="dot"></span> Leblon — (21) 97185-7509
+    </a>
+    <a href="https://wa.me/5521994014570" target="_blank" class="wa-item">
+      <span class="dot"></span> Catete — (21) 99401-4570
+    </a>
+  </div>
+  <button class="wa-btn" onclick="document.getElementById('waFloat').classList.toggle('open')">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </button>
+</div>
+
+</body>
+</html>
