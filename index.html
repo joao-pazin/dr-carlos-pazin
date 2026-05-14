@@ -121,42 +121,66 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Quais especialidades a clínica Dr. Carlos Pazin oferece?",
+      "name": "Onde fica o dentista Dr. Carlos Pazin no Rio de Janeiro?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oferecemos Ortodontia, Estética Dental, Invisalign, Harmonização Facial, Endodontia, Halitologia, Implantodontia, Reabilitação Bucal e Periodontia."
+        "text": "A clínica Dr. Carlos Pazin possui duas unidades no Rio de Janeiro: Leblon (Rua General Urquiza, 67, loja 9) e Largo do Machado (Rua do Catete, 311, sala 804). O agendamento pode ser feito pelo WhatsApp de cada unidade."
       }
     },
     {
       "@type": "Question",
-      "name": "Onde ficam as unidades da clínica?",
+      "name": "Como funciona o Invisalign e quanto tempo dura o tratamento?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Temos duas unidades no Rio de Janeiro: Leblon (Rua General Urquiza, 67, loja 9) e Largo do Machado (Rua do Catete, 311, sala 804)."
+        "text": "O Invisalign é um aparelho ortodôntico invisível e removível que corrige o alinhamento dos dentes sem os brackets tradicionais. O Dr. Carlos Pazin é Invisalign Doctor Certificado. A duração varia de 6 a 18 meses dependendo do caso."
       }
     },
     {
       "@type": "Question",
-      "name": "Como agendar uma consulta?",
+      "name": "O que é implante dentário e como é feito o procedimento?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Você pode agendar diretamente pelo WhatsApp de cada unidade, através dos botões disponíveis no site."
+        "text": "O implante dentário é um parafuso de titânio inserido no osso da mandíbula ou maxila que substitui a raiz do dente perdido. Após a osseointegração, uma coroa é fixada sobre o implante, devolvendo função e estética. A clínica Dr. Carlos Pazin é especialista em Implantodontia."
       }
     },
     {
       "@type": "Question",
-      "name": "O Dr. Carlos Pazin é especialista em Invisalign?",
+      "name": "O que é harmonização facial e quais procedimentos são realizados?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim, o Dr. Carlos Pazin é Invisalign Doctor Certificado, além de especialista em Implantodontia e Ortodontia."
+        "text": "Harmonização facial é um conjunto de procedimentos estéticos minimamente invasivos — como preenchimento labial, botox e bichectomia — que equilibram as proporções do rosto. A clínica Dr. Carlos Pazin oferece harmonização facial com segurança e resultado natural."
       }
     },
     {
       "@type": "Question",
-      "name": "A clínica atende crianças e adultos?",
+      "name": "Qual é o tratamento para mau hálito (halitose)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim, atendemos pacientes de todas as idades, com especialidades voltadas para toda a família."
+        "text": "O tratamento do mau hálito começa com um diagnóstico completo para identificar a origem — que pode ser bucal, gástrica ou respiratória. A clínica oferece Halitologia, com abordagem especializada para tratar e eliminar a halitose de forma definitiva."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é tratamento de canal e quando é necessário?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O tratamento de canal (endodontia) é indicado quando a polpa do dente — região interna com nervos e vasos — é atingida por cárie profunda, fratura ou infecção. A clínica Dr. Carlos Pazin realiza o procedimento com tecnologia avançada e máximo conforto para o paciente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que são facetas dentárias e lentes de contato dental?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Facetas e lentes de contato dental são lâminas ultrafinas de porcelana coladas na frente dos dentes para corrigir cor, forma e tamanho. É um dos procedimentos de estética dental mais procurados, com resultado imediato e duradouro. A clínica Dr. Carlos Pazin oferece esse tratamento nas unidades do Leblon e Largo do Machado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como agendar consulta na clínica Dr. Carlos Pazin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O agendamento é feito pelo WhatsApp: unidade do Leblon pelo (21) 97185-7509 e unidade do Largo do Machado pelo (21) 99401-4570. Também é possível ligar diretamente para as unidades em horário comercial, de segunda a sexta das 8h às 18h."
       }
     }
   ]
@@ -623,6 +647,30 @@ footer {
 .footer-links a:hover { color: var(--white); }
 .footer-copy { font-size: 0.7rem; color: #3a4a55; }
 
+/* FAQ */
+#faq { background: var(--off); }
+.faq-list { max-width: 760px; margin: 2.5rem auto 0; display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--cream); }
+.faq-item:first-child { border-top: 1px solid var(--cream); }
+.faq-question {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 0; gap: 1rem;
+  font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600;
+  color: var(--ink); text-align: left; line-height: 1.4;
+}
+.faq-question::after {
+  content: '+'; font-size: 1.4rem; font-weight: 300;
+  color: var(--blue); flex-shrink: 0; transition: transform 0.3s;
+}
+.faq-question[aria-expanded="true"]::after { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-answer.open { max-height: 300px; padding-bottom: 1.25rem; }
+.faq-answer p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
 /* ── WA FLUTUANTE ── */
 .wa-float {
   position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 999;
@@ -972,6 +1020,56 @@ footer {
 </section>
 
 <!-- CTA -->
+<section id="faq">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Dúvidas frequentes</div>
+    <h2 class="section-title">Perguntas <em>frequentes</em></h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Onde fica o dentista Dr. Carlos Pazin no Rio de Janeiro?</button>
+        <div class="faq-answer"><p>A clínica Dr. Carlos Pazin possui duas unidades no Rio de Janeiro: Leblon (Rua General Urquiza, 67, loja 9) e Largo do Machado (Rua do Catete, 311, sala 804). O agendamento pode ser feito pelo WhatsApp de cada unidade.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Como funciona o Invisalign e quanto tempo dura o tratamento?</button>
+        <div class="faq-answer"><p>O Invisalign é um aparelho ortodôntico invisível e removível que corrige o alinhamento dos dentes sem os brackets tradicionais. O Dr. Carlos Pazin é Invisalign Doctor Certificado. A duração varia de 6 a 18 meses dependendo do caso.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O que é implante dentário e como é feito o procedimento?</button>
+        <div class="faq-answer"><p>O implante dentário é um parafuso de titânio inserido no osso da mandíbula ou maxila que substitui a raiz do dente perdido. Após a osseointegração, uma coroa é fixada sobre o implante, devolvendo função e estética. A clínica Dr. Carlos Pazin é especialista em Implantodontia.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O que é harmonização facial e quais procedimentos são realizados?</button>
+        <div class="faq-answer"><p>Harmonização facial é um conjunto de procedimentos estéticos minimamente invasivos — como preenchimento labial, botox e bichectomia — que equilibram as proporções do rosto. A clínica Dr. Carlos Pazin oferece harmonização facial com segurança e resultado natural.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Qual é o tratamento para mau hálito (halitose)?</button>
+        <div class="faq-answer"><p>O tratamento do mau hálito começa com um diagnóstico completo para identificar a origem — que pode ser bucal, gástrica ou respiratória. A clínica oferece Halitologia, com abordagem especializada para tratar e eliminar a halitose de forma definitiva.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O que é tratamento de canal e quando é necessário?</button>
+        <div class="faq-answer"><p>O tratamento de canal (endodontia) é indicado quando a polpa do dente — região interna com nervos e vasos — é atingida por cárie profunda, fratura ou infecção. A clínica Dr. Carlos Pazin realiza o procedimento com tecnologia avançada e máximo conforto para o paciente.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">O que são facetas dentárias e lentes de contato dental?</button>
+        <div class="faq-answer"><p>Facetas e lentes de contato dental são lâminas ultrafinas de porcelana coladas na frente dos dentes para corrigir cor, forma e tamanho. É um dos procedimentos de estética dental mais procurados, com resultado imediato e duradouro. A clínica oferece esse tratamento nas unidades do Leblon e Largo do Machado.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Como agendar consulta na clínica Dr. Carlos Pazin?</button>
+        <div class="faq-answer"><p>O agendamento é feito pelo WhatsApp: unidade do Leblon pelo (21) 97185-7509 e unidade do Largo do Machado pelo (21) 99401-4570. Também é possível ligar diretamente para as unidades em horário comercial, de segunda a sexta das 8h às 18h.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="agendar">
   <div class="section-wrap">
     <div class="section-eyebrow" style="color:rgba(255,255,255,0.6); justify-content:center;">Pronto para começar?</div>
@@ -1020,5 +1118,20 @@ footer {
   </button>
 </div>
 
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+</script>
 </body>
 </html>
